@@ -1,9 +1,12 @@
 # digital-rain.js
 Canonical Matrix code canvas animation that's easy to add to any webpage.
 
+Duration 3 seconds: <br>
+    ![Alt text](example.gif)
+
 I've tried to be as acurate to the origional Matrix code as possible by only using unicode characters found in the movie. My research shows that the following list of characters is canonical (I did not go through the movie frame-by-frame myself)
 
-Identified Matrix Code Characters (all mirrored unless noted)
+### Identified Matrix Code Characters (all mirrored unless noted)
 
     KANJI: "日" (roughly meaning day/sun)
 
