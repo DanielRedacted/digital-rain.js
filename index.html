@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
+
+    <title>Digital Rain</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin:0;
+            padding:0;
+        }
+
+        canvas {
+            display: block;
+            background-color:black;
+            transition: opacity 5s; /* Add transition property for opacity */
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:-999;
+            width:100vw;
+            height:100vh;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrixCanvas"></canvas>
+    <script src="digital-rain.js">
+    </script>
+
+    <script>
+        // Call the function with options to start the Matrix Rain animation
+        startMatrixRainAnimation({
+            canvas: 'matrixCanvas',
+            dropColor: "#ffffff",
+            trailColor: '#03A062',
+            backgroundColor: 'rgba(0, 0, 0, 0.08)',
+            fontSize: 14,
+            speedCoeff: 0,
+            year: 1999,
+            duration: 0, // Specify the duration in seconds (0 == infinite)
+        });
+
+    </script>
+</body>
+</html>
