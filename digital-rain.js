@@ -1,18 +1,37 @@
 // Encapsulate the Matrix Rain animation in a function with options
 function startMatrixRainAnimation(options = {}) {
     // Get options or use defaults
-    const canvas = options.canvas || 'matrixCanvas'; // Renamed canvasId to canvas
-    const speedCoeff = options.speedCoeff || 25; // Renamed duration to speedCoeff
-    const trailColor = options.trailColor || '#0f0'; // Renamed fontColor to color
-    const dropColor = options.dropColor || '#fff'
-    const backgroundColor = options.backgroundColor || 'rgba(0, 0, 0, 0.08)';
-    const fontSize = options.fontSize || 14;
-    const year = options.year || 1999; // Renamed seed to year
-    const duration = options.duration || 0; // Duration of animation (in seconds)
+    const canvas = options.canvasID || 'digital-rain';  // Renamed canvasId to canvas
+    const dropColor = options.dropColor || '#fff'       // Color of leading char
+    const trailColor = options.trailColor || '#03A062'; // Renamed fontColor to color
+    const backgroundColor = options.backgroundColor || 'rgb(0, 0, 0)';   // Canvas color (must be rgb format)
+    const trailLength = options.backgroundColor || '6';
+    const fontSize = options.fontSize || 14;            // Char size in px
+    const speedCoeff = options.speedCoeff || 25;        // Speed of the falling drops
+    const duration = options.duration || 0;             // Duration of animation in seconds (0 === infinite)
+
+    const seed = 1999;
 
     // Get the canvas and its rendering context
     const canvasElement = document.getElementById(canvas);
     const ctx = canvasElement.getContext('2d');  
+
+    
+    // Ensure the input is within the valid range (0-10)
+    if (trailLength < 0 || trailLength > 10) {
+        throw new Error("trailLength should be between 0 and 10");
+    }
+    // Map the input from the range 0-10 to the range 0.2-0.00
+    const frameAlpha = (0.2 - (trailLength / 10) * 0.2).toFixed(2);
+
+    // Style the canvas backgroundColor and define frameColor
+    const rgbValues = backgroundColor.match(/\d+/g);    // Parse the RGB values from the background color
+    const r = rgbValues[0];
+    const g = rgbValues[1];
+    const b = rgbValues[2];
+    const frameColor = `rgba(${r}, ${g}, ${b}, ${frameAlpha})`;    // Set to a transparency of backgroundColor defined by trailLength
+    canvasElement.style.backgroundColor = backgroundColor;
+    canvasElement.style.fontFamily = "monospace";
 
     // Mirror the canvas horizontally
     ctx.translate(canvas.width, 0);  // Move the canvas origin (0,0) to the far right
@@ -27,18 +46,14 @@ function startMatrixRainAnimation(options = {}) {
     const rows = canvasElement.height / fontSize;
     const columns = Math.floor(canvasElement.width / fontSize); // Ensure it's an integer
 
-
-
-
     // Initialize arrays for raindrop positions and delays
     const drops = new Array(columns).fill(-1); // Start all raindrops at the top
     const previousChars = []; // Holds the previous character for each raindrop
     let startTime = Date.now(); // Record the animation start time
 
-
     // Seeded random number generator (Mulberry32)
     function mulberry32(a) {
-        a = a += Math.floor(Math.random() * 1001); // Generate a random number between 0 and 1000 and add it to the year variable.
+        a = a += Math.floor(Math.random() * 1001); // Generate a random number between 0 and 1000 and add it to the seed variable.
         return () => {
         let t = a += 0x6D2B79F5;
         t = Math.imul(t ^ t >>> 15, t | 1);
@@ -48,7 +63,7 @@ function startMatrixRainAnimation(options = {}) {
     }
 
     // Create a seeded random number generator
-    const seededRandom = mulberry32(year);
+    const seededRandom = mulberry32(seed);
 
     // Initialize delays with seeded random values
     const delays = new Array(columns).fill(0).map(() => Math.floor(seededRandom() * 100));
@@ -112,7 +127,7 @@ function startMatrixRainAnimation(options = {}) {
 
     function drawMatrixRain() {
         // Set the background color (slightly transparent for trail effect)
-        ctx.fillStyle = backgroundColor;
+        ctx.fillStyle = frameColor;
         ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
         ctx.font = `${fontSize}px monospace`; // Set the font for the characters
         
