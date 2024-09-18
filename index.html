@@ -11,7 +11,7 @@
 
     <style>
         * { box-sizing: border-box; }
-        html, body { height: 100%; width: 100%; margin:0; padding:0; }
+        html, body { height: 100%; width: 100%; margin:0; padding:0; background-color:black}
     </style>
 </head>
 <body>
@@ -21,6 +21,7 @@
             display: block;
             width:100%;
             height:100%;
+            transition: 1s; /* for canvas transparancy after duration */
             z-index:-999;   /* position canvas behind other elements */
         }
     </style>
@@ -33,9 +34,9 @@
             // dropColor: "#b0fcde",
             // trailColor: '#00a060',
             // backgroundColor: 'rgb(0, 0, 0)',
-            // trailLength: '6',
+            // trailLength: '7',
             // fontSize: 14,
-            // speedCoeff: 10,
+            // speedCoeff: 25,
             // duration: 0,
         });
     </script>
