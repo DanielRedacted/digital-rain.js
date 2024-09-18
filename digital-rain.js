@@ -110,37 +110,6 @@ function startMatrixRainAnimation(options = {}) {
         return String.fromCharCode(charCode);
     }
 
-    // // Function to draw the Matrix Rain animation
-    // function drawMatrixRain() {
-    //     // Set the background color
-    //     ctx.fillStyle = backgroundColor;
-    //     ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-    //     ctx.font = `${fontSize}px monospace`; // Set the font for the characters
-        
-    //     drops.forEach((drop, i) => {
-    //     if (delays[i] > 0) {
-    //         delays[i]--; // Reduce the delay
-    //         return;
-    //     }
-
-    //     if (drop * fontSize > canvasElement.height) {
-    //         // Reset or introduce a random delay
-    //         if (duration === 0 || (Date.now() - startTime) < duration * 1000) {
-    //         seededRandom() < 0.5 ? (delays[i] = Math.floor(seededRandom() * 25)) : (drops[i] = 0);
-    //         } else {
-    //         setTimeout(() => {canvasElement.style.opacity = 0;}, 2500);
-    //         }
-    //     }
-
-
-    //     drops[i]++; // Move the raindrop down
-    //     const x = i * fontSize; // Calculate the horizontal position
-    //     const y = drops[i] * fontSize; // Calculate the vertical position
-    //     ctx.fillStyle = color; // Set the character color
-    //     ctx.fillText(getRandomChar(), x, y); // Draw the random character at the calculated position
-    //     });
-    // }
-
     function drawMatrixRain() {
         // Set the background color (slightly transparent for trail effect)
         ctx.fillStyle = backgroundColor;
