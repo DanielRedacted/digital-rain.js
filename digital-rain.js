@@ -1,10 +1,38 @@
+// digital-rain.js 
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// MIT License
+
+// Copyright (c) 2024 Daniel ████ (@DanielRedacted)
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+/////////////////////////////////////////////////////////////////////////////////
+
+
 function startDigitalRain(options = {}) {
     // Get options or use defaults
     const canvas = options.canvasID || 'digital-rain';  // Renamed canvasId to canvas
     const dropColor = options.dropColor || '#b0fcde'    // Color of leading char
     const trailColor = options.trailColor || '#03A062'; // Renamed fontColor to color
     const backgroundColor = options.backgroundColor || 'rgb(0, 0, 0)';   // Canvas color (must be rgb format)
-    const trailLength = options.backgroundColor || '6'; // (0-10)
+    const trailLength = options.backgroundColor || '7'; // (0-10)
     const fontSize = options.fontSize || 14;            // Char size in px
     const speedCoeff = options.speedCoeff || 25;        // Speed of the falling drops
     const duration = options.duration || 0;             // Duration of animation in seconds (0 === infinite)
@@ -73,11 +101,8 @@ function startDigitalRain(options = {}) {
             [0x0041, 0x005A],
             [0x0041, 0x005A],
 
-            // KANJI - CJK Unified Ideographs
-            // [0x4E00, 0x9FFF],
-            // [0x4E00, 0x9FFF],
-            // [0x4E00, 0x9FFF],
-            // [0x4E00, 0x9FFF],
+            // // KANJI: 日
+            // [0x65E5, 0x65E5],
 
             // Half-width Katakana
             [0xFF65, 0xFF9F],
@@ -166,7 +191,6 @@ function startDigitalRain(options = {}) {
             drops[i]++;                 // Move the raindrop down
         });
     }
-    
 
     // Function to animate the Digital Rain
     function animateRain() {
