@@ -1,7 +1,9 @@
 # digital-rain.js
-Canonical Matrix code canvas animation that's easy to add to any webpage.
+Canonical Matrix code canvas animation, written in vanilla Javascript, that's easy to add to any webpage.
+Uses only characters found in the origional matrix code.
+Customizable with options.
 
-![Alt text](example.gif)
+<img src="example.gif" alt="Example" style="width: 100%;"></img>
 <br>` duration: 3,  // seconds`
 
 <hr>
