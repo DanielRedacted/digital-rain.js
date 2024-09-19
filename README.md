@@ -9,23 +9,25 @@ Canonical Matrix code canvas animation that's easy to add to any webpage.
 ### Matrix Characters (all mirrored unless noted)
 The following list of characters I've identified to be canonical to the oriogional Matrix Code (I did not go through the movie frame-by-frame myself). Unless otherwise noted, all characters were mirrored (backwards) to give the effect of being outside the Matrix, looking in.
 
-- ARABIC DIGITS: "012345789", 
+- ALL INCLUDED: `012345789`, `AEHIMRTXZ`, `ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ`, `:・."=*+-<>¦｜ _ `
+
+- ARABIC DIGITS: `012345789`, 
     - Not Mirrored: 
-        - "7"
-        - "3" is upside-down, 
-        - "4" has underscore, 
-    - Missing: "6"
+        - `7`
+        - `3` is upside-down, 
+        - `4` has underscore, 
+    - Missing: `6`
 
-- LATIN LETTERS (Not Mirrored): "Z" + "THEMARIX" (THE MATRIX)
+- LATIN LETTERS (Not Mirrored): `Z` + `THEMARIX` (THE MATRIX)
 
-- HALF-WIDTH KATAKANA: "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ"
-    - "ｳｵｹ" has overscore, 
-    - "ﾈﾎﾔ" has underscore;
-    - Missing: "ｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ"
+- HALF-WIDTH KATAKANA: `ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ`
+    - `ｳｵｹ` has overscore, 
+    - `ﾈﾎﾔ` has underscore;
+    - Missing: `ｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ`
 
-- Punctuation/Arithmetic/Other: ":・."=*+-<>¦｜ _"
+- Punctuation/Arithmetic/Other: `:・."=*+-<>¦｜ _`
 
-- KANJI: "日" (roughly meaning day/sun)
+- KANJI: `日` (roughly meaning day/sun)
 
 NOTE: Currently, I have ALL characters are mirrored. I've omitted the Kanji "日" because it increases the width of each column. 
 I would like to correct these innacuracies for a more canonical Matrix code.
