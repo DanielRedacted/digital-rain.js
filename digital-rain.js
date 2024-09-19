@@ -87,75 +87,62 @@ function startDigitalRain(options = {}) {
 
     // Initialize delays with seeded random values
     const delays = new Array(columns).fill(0).map(() => Math.floor(seededRandom() * 100));
+    
+    // Character Pool
+    const charPool = (
+        // Half-width Katakana
+        'ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ' + 
+            // Missing:
+            // 'ｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ' +
+        // Arabic Digits
+        '012345789' + 
+            // Missing:
+            // '6' +
+        // Latin Uppercase
+        'ZTHEMARIX' + 
+            // Missing:
+            // 'BCDFGJKLNOPQSUVWY' +
+        // Other
+        ':・."=*+-<>¦｜ _'
+        // // Kanji
+        // '日' 
+    );
 
-    // Function to generate a random character based on specified character ranges
+    // Characters that will receive the underscore
+    const underscoreChars = 'ﾈﾎﾔ' + '4';
+
+    // Characters that will receive the overscore
+    const overscoreChars = 'ｳｵｹ';
+
+    // Function to generate a random character based on the defined pools
     function getRandomChar() {
-        const charRanges = [
-        // Canonical Matrix Characters
+        const randomIndex = Math.floor(seededRandom() * charPool.length);  // Get a random index
+        let selectedChar = charPool[randomIndex];  // Select the character
 
-            // Arabic Digits: 1-9
-            [0x0031, 0x0039],
-            [0x0031, 0x0039],
+        // If the selected character is one of "ﾈ", "ﾎ", "ﾔ", or "4", add the Unicode underscore
+        if (underscoreChars.includes(selectedChar)) {
+            selectedChar += '\u0332';  // Append the combining underscore character
+        }
 
-            // Latin Uppercase: A-Z
-            [0x0041, 0x005A],
-            [0x0041, 0x005A],
+        // If the selected character is one of "ｳ", "ｵ", or "ｹ", add the Unicode overscore
+        if (overscoreChars.includes(selectedChar)) {
+            selectedChar += '\u0305';  // Append the combining overscore character
+        }
 
-            // // KANJI: 日
-            // [0x65E5, 0x65E5],
-
-            // Half-width Katakana
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-            [0xFF65, 0xFF9F],
-
-            // Punctuation/Math
-            [0x002E, 0x002E], // '.'
-            [0x0022, 0x0022], // '"'
-            [0x003D, 0x003D], // '='
-            [0x002A, 0x002A], // '*'
-            [0x002B, 0x002B], // '+'
-            [0x002D, 0x002D], // '-'
-            [0x00A6, 0x00A6], // '¦'
-            [0x007C, 0x007C], // '|'
-            [0x005F, 0x005F], // '_'
-            [0x0020, 0x0020], // [space]
-            [0x2500, 0x2500], // '╌'
-
-
-        // Non-Canonical Characters
-
-            // [0x0020, 0x003F], // Basic Latin
-            // [0x16A0, 0x16EA], // Runic
-        ];
-
-        let charCode;
-        do {
-            const [start, end] = charRanges[Math.floor(seededRandom() * charRanges.length)];
-            charCode = Math.floor(seededRandom() * (end - start + 1)) + start;
-        } while (charCode >= 0xD800 && charCode <= 0xDFFF);
-
-        return String.fromCharCode(charCode);
+        return selectedChar;  // Return the final character (with or without underscore/overscore)
     }
 
     function drawRain() {
-        // Set the background color (slightly transparent for trail effect)
         ctx.fillStyle = frameColor;
         ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-        ctx.font = `${fontSize}px monospace`; // Set the font for the characters
-        
+        ctx.font = `${fontSize}px monospace`;
+
         drops.forEach((drop, i) => {
             if (delays[i] > 0) {
-                delays[i]--; // Reduce the delay
+                delays[i]--;
                 return;
             }
-    
-            // Reset the drop or introduce a random delay if it reaches the bottom
+
             if (drop * fontSize > canvasElement.height) {
                 if (duration === 0 || (Date.now() - startTime) < duration * 1000) {
                     seededRandom() < 0.5 ? (delays[i] = Math.floor(seededRandom() * 25)) : (drops[i] = 0);
@@ -163,16 +150,15 @@ function startDigitalRain(options = {}) {
                     setTimeout(() => { canvasElement.style.opacity = 0; }, 2500);
                 }
             }
-    
-            // First, draw the character from the previous frame in green (trail effect)
-            const x = i * fontSize;         // Calculate the horizontal position
-            const y = drops[i] * fontSize;  // Calculate the vertical position for the current drop
+
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
 
             // Flip the canvas horizontally for the text to appear backwards
-            ctx.save();                                                 // Save the current state of the canvas
-            ctx.translate(x + fontSize / 2, y - fontSize / 2);          // Move to the position where we want to draw
-            ctx.scale(-1, 1);                                           // Flip the character horizontally
-            ctx.translate(-(x + fontSize / 2), -(y - fontSize / 2));    // Move back to the original position
+            ctx.save();  // Save the current state of the canvas
+            ctx.translate(x + fontSize / 2, y - fontSize / 2);  // Move to the position where we want to draw
+            ctx.scale(-1, 1);  // Flip the character horizontally
+            ctx.translate(-(x + fontSize / 2), -(y - fontSize / 2));  // Move back to the original position
 
             // Set the previous character color (trail)
             ctx.fillStyle = trailColor;
@@ -184,11 +170,11 @@ function startDigitalRain(options = {}) {
             ctx.fillText(newChar, x, y);
 
             // Restore the canvas state
-            ctx.restore();  // Restores the canvas state, so the rest of the drawing is unaffected by the flip            
-            
-            // Update the previous character tracker and move the raindrop down
-            previousChars[i] = newChar; // Store the new character for the next iteration
-            drops[i]++;                 // Move the raindrop down
+            ctx.restore();  // Restores the canvas state, so the rest of the drawing is unaffected by the flip
+
+            // Update the previous character and move the raindrop down
+            previousChars[i] = newChar;
+            drops[i]++;
         });
     }
 
