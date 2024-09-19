@@ -9,9 +9,9 @@ Canonical Matrix code canvas animation that's easy to add to any webpage.
 ### Matrix Characters (all mirrored unless noted)
 The following list of characters I've identified to be canonical to the oriogional Matrix Code (I did not go through the movie frame-by-frame myself). Unless otherwise noted, all characters were mirrored (backwards) to give the effect of being outside the Matrix, looking in.
 
-- ALL INCLUDED: `012345789`, `AEHIMRTXZ`, `ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ`, `:・."=*+-<>¦｜ _ `
+- ALL INCLUDED: `012345789` `AEHIMRTXZ` `ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ` `:・."=*+-<>¦｜ _ `
 <br><br>
-- ARABIC DIGITS: `012345789`, 
+- ARABIC DIGITS: `012345789` 
     - Not Mirrored: 
         - `7`
         - `3` is upside-down, 
