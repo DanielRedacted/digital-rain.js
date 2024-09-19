@@ -21,8 +21,9 @@ I've tried to be as acurate to the origional Matrix code as possible by only usi
             "4" has underscore, 
         Missing: "6"
 
-    LATIN LETTERS (Not Mirrored): "Z" + "THEMARIX" (THEMATRIX)
+    LATIN LETTERS (Not Mirrored): "Z" + "THEMARIX" (THE MATRIX)
 
     Punctuation/Arithmetic/Other: ":・."=*+-<>¦｜ _"
 
-NOTE: for simplicity, currently all characters are mirrored, all half-width katakana, arabic digit, and latin letter character are included; no characters are underscored or overscored; I've ommitted the Kanji 日 because it increases the width of each column. I would like to correct these innacuracies for a more canonical matrix code
+NOTE: for simplicity, currently, all characters are mirrored, and I've omitted the Kanji "日" because it increases the width of each column. 
+I would like to correct these innacuracies for a more canonical Matrix code
