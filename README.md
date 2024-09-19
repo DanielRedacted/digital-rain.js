@@ -2,7 +2,7 @@
 Canonical Matrix code canvas animation that's easy to add to any webpage.
 
 ![Alt text](example.gif)
-<br>[ duration: 3, ]
+<br>` duration: 3,  // seconds`
 
 <hr>
 
