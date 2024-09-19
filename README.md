@@ -1,8 +1,8 @@
 # digital-rain.js
 Canonical Matrix code canvas animation that's easy to add to any webpage.
 
-Duration 3 seconds: <br>
-    ![Alt text](example.gif)
+![Alt text](example.gif)
+<br>[ duration: 3, ]
 
 <hr>
 
